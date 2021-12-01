@@ -13,7 +13,7 @@ class Calculator{
     }
 
     delete(){
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1)
 
     }
     //append numbers from button presses on the keypad
@@ -32,6 +32,7 @@ class Calculator{
         this.currentOperand = '';
     }
 
+    //perform algebraic operations on previous and current operands or do not allow operation if operands are not valid or missing
     compute(){
         let computation;
         const prev = parseFloat(this.previousOperand);
@@ -96,5 +97,17 @@ operationButtons.forEach(button =>{
 //event listener for equals button
 equalsButton.addEventListener('click', button =>{
     calculator.compute();
+    calculator.updateDisplay();
+})
+
+//event listener for clear button
+allClearButton.addEventListener('click', button =>{
+    calculator.clear();
+    calculator.updateDisplay();
+})
+
+//event listener for delete button
+deleteButton.addEventListener('click', button =>{
+    calculator.delete();
     calculator.updateDisplay();
 })
