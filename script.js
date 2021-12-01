@@ -1,3 +1,7 @@
+// Name: Matt Keplinger
+// Program: Calculator
+// Date: 01 Dec 2021
+
 class Calculator{
     constructor(previousOperandTextElement, currentOperandTextElement){
         this.previousOperandTextElement = previousOperandTextElement;
@@ -12,6 +16,7 @@ class Calculator{
         this.operation = undefined;
     }
 
+    // delete function
     delete(){
         this.currentOperand = this.currentOperand.toString().slice(0, -1)
 
@@ -61,7 +66,7 @@ class Calculator{
         this.previousOperand = '';
     }
 
-
+    //clean up display numbers and allow commas
     getDisplayNumber(number){
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
@@ -81,7 +86,7 @@ class Calculator{
         }
     }
 
-
+    //update display with user inputs
     updateDisplay(){
         this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
         if (this.operation !== null){
